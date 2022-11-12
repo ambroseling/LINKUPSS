@@ -1,11 +1,28 @@
 import React, { Component } from 'react';
 import { NavLink,Link } from 'react-router-dom';
+import { useState } from "react";
 import LinkupssLogo from './logo';
 import Badge from 'react-bootstrap/Badge'
 class NavBar extends Component {
-    state = {  } 
+    //state = {  } 
+    state = {
+      user: "Admin ?",
+    };
+    
+    changeUser = () => {
+      if(localStorage.getItem("user") == null){
+        this.setState({user: "Admin ?"});
+      }
+      else{
+        this.setState({user: localStorage.getItem("user")})
+      }
+    }
+    componentDidMount() {
+      this.changeUser();
+    }
     render() { 
         return (
+
 
           <nav className="nav collapsible">
             <Link className="navbar__brand" to="/"  style={{ textDecoration: 'none' }}><h1 className="text-primary">Linkupss</h1></Link>
@@ -21,8 +38,7 @@ class NavBar extends Component {
                
                
                 <React.Fragment>
-                <li className="nav__item"><NavLink className="nav-item nav-link col" to="/loginregister"><h4 className="text-primary"><Badge>Admin ?</Badge></h4></NavLink></li>
-                <li className="nav__item"><NavLink className="nav-item nav-link col" to="/loginregister"><h4 className="text-primary"><Badge>Participant ?</Badge></h4></NavLink></li>
+                <li className="nav__item"><NavLink className="nav-item nav-link col" to="/loginregister"><h4 className="text-primary">{this.state.user}</h4></NavLink></li>
 
                 </React.Fragment>
                 

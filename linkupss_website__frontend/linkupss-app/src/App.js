@@ -16,6 +16,7 @@ import LatestNews from './components/latest-news/lastestNews';
 import FAQ from './components/faq';
 import Home from './components/home/home';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Users from './components/loginregister/users';
 //EVERYTHING IS IN CAMEL CASE!!!  
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
     <div className="content">
     
     <Switch>
+    <Route path="/users" component={Users}/> 
     <Route path="/faq" component={FAQ}/> 
     <Route path="/products" component={Products}/> 
     <Route path="/setup" component={SetUp}/> 
